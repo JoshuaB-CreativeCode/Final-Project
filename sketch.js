@@ -4,11 +4,10 @@ let dif = 1;
 let score = 0;
 let readyUp = 0;
 let spawner = 1;
-let circleX = -50;
-let circleY = -50;
+let circleX = 0;
+let circleY = 0;
 let backgroundSpawner = 1;
 let circleColor = 0;
-let colorPicker = 1;
 let timeKeeper = 0;
 
 function setup() {
@@ -99,15 +98,17 @@ function gameScreen() {
         if (spawner == 1) {
             timeKeeper = 0;
             circleColor = random(1,65)
+            circleColor = ~~circleColor;
+            console.log(circleColor)
             circleX = random(100,700)
             circleY = random(100,700)
             if (circleColor <= 59) {
                 fill('green')
-                console.log('test green')
+                //console.log('test green')
             }
             else if (circleColor >= 60) {
                 fill('red')
-                console.log('test red')
+                //console.log('test red')
             }
             circle(circleX, circleY, 100)
             spawner = 0
@@ -187,7 +188,6 @@ function mousePressed() {
         if (mouseY >= circleY - 50 && mouseY <= circleY + 50) {
             if (circleColor <= 59) {
                 ridBalls();
-                console.log('Big Test')
                 score++
                 spawner = 1
             }
