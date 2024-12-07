@@ -186,7 +186,7 @@ function ridBalls() {
 function mousePressed() {
     if (mouseX >= circleX - 50 && mouseX <= circleX + 50){
         if (mouseY >= circleY - 50 && mouseY <= circleY + 50) {
-            if (circleColor <= 59) {
+            if (circleColor <= 59 && programState == 'game') {
                 ridBalls();
                 score++
                 spawner = 1
