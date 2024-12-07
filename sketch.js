@@ -9,6 +9,13 @@ let circleY = 0;
 let backgroundSpawner = 1;
 let circleColor = 0;
 let timeKeeper = 0;
+let failMusic = 0;
+
+function preload() {
+    musicSound = loadSound("/Sounds/music.mp3");
+    pressSound = loadSound("/Sounds/press.mp3");
+    failSound = loadSound("/Sounds/fail.mp3");
+}
 
 function setup() {
     //All the setup, including framerate
@@ -50,6 +57,7 @@ function keyReleased() {
 
 function startScreen() {
     //Creates the start screen, which is what the player sees first.
+    musicSound.loop();
     background(150,150,150);
     textSize(75);
     fill(0);
@@ -187,6 +195,7 @@ function mousePressed() {
     if (mouseX >= circleX - 50 && mouseX <= circleX + 50){
         if (mouseY >= circleY - 50 && mouseY <= circleY + 50) {
             if (circleColor <= 59 && programState == 'game') {
+                pressSound.play();
                 ridBalls();
                 score++
                 spawner = 1
@@ -200,6 +209,11 @@ function mousePressed() {
 
 // The fail Screen.
 function failScreen() {
+    musicSound.stop(0);
+    if (failMusic == 0) {
+        failSound.play();
+        failMusic = 1
+    }
     circleX = -500
     circleY = -500
     background(150,150,150);
