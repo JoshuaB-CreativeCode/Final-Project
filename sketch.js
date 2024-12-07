@@ -200,6 +200,8 @@ function mousePressed() {
 
 // The fail Screen.
 function failScreen() {
+    circleX = -500
+    circleY = -500
     background(150,150,150);
     textSize(75);
     fill(0);
