@@ -16,7 +16,6 @@ function setup() {
     createCanvas(800,800);
     rectMode(CENTER);
     frameRate(60);
-    background(150);
 
 }
 
@@ -87,7 +86,7 @@ function gameScreen() {
         }
         textSize(50)
         fill('green')
-        if (readyUp > 260) {
+        if (readyUp > 260 && readyUp < 270) {
             fill(150)
         }
         text('Go!', 400, 400)
@@ -104,9 +103,11 @@ function gameScreen() {
             circleY = random(100,700)
             if (circleColor <= 59) {
                 fill('green')
+                console.log('test green')
             }
             else if (circleColor >= 60) {
                 fill('red')
+                console.log('test red')
             }
             circle(circleX, circleY, 100)
             spawner = 0
@@ -129,8 +130,8 @@ function gameScreen() {
             }
             else if (circleColor >= 60) {
                 ridBalls();
+                score++
                 spawner = 1
-                score++;
             }
         }
         else if (timeKeeper > 180 && dif == 2) {
@@ -139,8 +140,8 @@ function gameScreen() {
             }
             else if (circleColor >= 60) {
                 ridBalls();
-                spawner = 1
-                score++
+                score++;
+                spawner = 1;
             }
         }
         else if (timeKeeper > 90 && dif == 3) {
@@ -149,8 +150,8 @@ function gameScreen() {
             }
             else if (circleColor >= 60) {
                 ridBalls();
-                spawner = 1
-                score++
+                score++;
+                spawner = 1;
             }
         }
         else if (timeKeeper > 60 && dif == 4) {
@@ -159,8 +160,8 @@ function gameScreen() {
             }
             else if (circleColor >= 60) {
                 ridBalls();
-                spawner = 1
-                score++
+                score++;
+                spawner = 1;
             }
         }
         else if (timeKeeper > 40 && dif == 5) {
@@ -169,8 +170,8 @@ function gameScreen() {
             }
             else if (circleColor >= 60) {
                 ridBalls();
-                spawner = 1
                 score++
+                spawner = 1
             }
         }
     }
@@ -186,8 +187,9 @@ function mousePressed() {
         if (mouseY >= circleY - 50 && mouseY <= circleY + 50) {
             if (circleColor <= 59) {
                 ridBalls();
-                spawner = 1
+                console.log('Big Test')
                 score++
+                spawner = 1
             }
             else if (circleColor >= 60) {
                 programState = 'fail'
