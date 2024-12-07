@@ -12,7 +12,7 @@ let timeKeeper = 0;
 let failMusic = 0;
 
 function preload() {
-    musicSound = loadSound("/Sounds/music.mp3");
+    //musicSound = loadSound("/Sounds/music.mp3");
     //pressSound = loadSound("/Sounds/press.mp3");
     //failSound = loadSound("/Sounds/fail.mp3");
 }
@@ -57,7 +57,7 @@ function keyReleased() {
 
 function startScreen() {
     //Creates the start screen, which is what the player sees first.
-    musicSound.loop();
+    //musicSound.loop();
     background(150,150,150);
     textSize(75);
     fill(0);
@@ -209,7 +209,7 @@ function mousePressed() {
 
 // The fail Screen.
 function failScreen() {
-    musicSound.stop(0);
+    //musicSound.stop(0);
     //if (failMusic == 0) {
         //failSound.play();
         //failMusic = 1
