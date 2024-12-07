@@ -11,11 +11,11 @@ let circleColor = 0;
 let timeKeeper = 0;
 let failMusic = 0;
 
-function preload() {
+//function preload() {
     //musicSound = loadSound("/Sounds/music.mp3");
     //pressSound = loadSound("/Sounds/press.mp3");
     //failSound = loadSound("/Sounds/fail.mp3");
-}
+//}
 
 function setup() {
     //All the setup, including framerate
