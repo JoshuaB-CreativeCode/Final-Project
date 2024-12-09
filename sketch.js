@@ -10,6 +10,7 @@ let backgroundSpawner = 1;
 let circleColor = 0;
 let timeKeeper = 0;
 let failMusic = 0;
+let pressThis = 0
 
 
 function setup() {
@@ -48,6 +49,23 @@ function keyReleased() {
             //startState();
         }
     }
+    if (circleColor >= 66 && programState === 'game') {
+        if(keyCode === 37 && pressThis === 1){
+            ridBalls();
+            score++
+            spawner = 1
+        }
+        else if(keyCode === 38 && pressThis === 2){
+            ridBalls();
+            score++
+            spawner = 1
+        }
+        else if(keyCode === 39 && pressThis === 3){
+            ridBalls();
+            score++
+            spawner = 1
+        }
+    }
 }
 
 function startScreen() {
@@ -60,7 +78,7 @@ function startScreen() {
     text('P r e s s  F a s t !', 400, 250);
     textSize(35);
     text('Press "ENTER" to play!', 400, 300);
-    text('Objective: \n Press the circle on the screen in time! \n If green, you score! \n If red, you lose :( \n Wait out red circles to score! \n A new circle will appear after you score. \n Score as high as you can!', 400, 400)
+    text("Objective: \n Press the circle on the screen in time! \n If green, you score! \n If red, you lose :( \n Wait out red circles to score! \n Don't click on yellow circles! \n Use arrow key on screen to score for yellow! \n A new circle will appear after you score. \n Score as high as you can!", 400, 400)
 }
 
 function gameScreen() {
@@ -95,11 +113,15 @@ function gameScreen() {
     // The main game keeper. Allows for balls to spawn, keeps track of score and level, and determines the parameters of such.
     if (readyUp > 180) {
         fill(0)
+        textSize(50);
         text("Score: " + score, 400, 50)
         text("Lvl: " + dif, 70, 780)
         if (spawner == 1) {
             timeKeeper = 0;
-            circleColor = random(1,65)
+            pressThis = random(1, 4)
+            pressThis = ~~pressThis;
+            console.log(pressThis)
+            circleColor = random(1,68)
             circleColor = ~~circleColor;
             console.log(circleColor)
             circleX = random(100,700)
@@ -108,9 +130,24 @@ function gameScreen() {
                 fill('green')
                 //console.log('test green')
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 && circleColor <= 65) {
                 fill('red')
                 //console.log('test red')
+            }
+            else if (circleColor >= 66) {
+                fill('yellow')
+            }
+            if (circleColor >= 66 && pressThis == 1) {
+                textSize(75)
+                text('LEFT!', 400, 400)
+            }
+            else if (circleColor >= 66 && pressThis == 2) {
+                textSize(75)
+                text('UP!', 400, 400)
+            }
+            else if (circleColor >= 66 && pressThis == 3) {
+                textSize(75)
+                text('RIGHT!', 400, 400)
             }
             circle(circleX, circleY, 100)
             spawner = 0
@@ -128,10 +165,10 @@ function gameScreen() {
             dif = 5
         }
         if (timeKeeper > 240 && dif == 1) {
-            if (circleColor <= 59) {
+            if (circleColor <= 59 || circleColor >= 66) {
                 programState = 'fail'
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 && circleColor <= 65) {
                 ridBalls();
                 score++
                 spawner = 1
@@ -141,7 +178,7 @@ function gameScreen() {
             if (circleColor <= 59) {
                 programState = 'fail'
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 && circleColor <= 65) {
                 ridBalls();
                 score++;
                 spawner = 1;
@@ -151,7 +188,7 @@ function gameScreen() {
             if (circleColor <= 59) {
                 programState = 'fail'
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 && circleColor <= 65) {
                 ridBalls();
                 score++;
                 spawner = 1;
@@ -161,7 +198,7 @@ function gameScreen() {
             if (circleColor <= 59) {
                 programState = 'fail'
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 && circleColor <= 65) {
                 ridBalls();
                 score++;
                 spawner = 1;
@@ -171,7 +208,7 @@ function gameScreen() {
             if (circleColor <= 59) {
                 programState = 'fail'
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 && circleColor <= 65) {
                 ridBalls();
                 score++
                 spawner = 1
@@ -193,7 +230,7 @@ function mousePressed() {
                 score++
                 spawner = 1
             }
-            else if (circleColor >= 60) {
+            else if (circleColor >= 60 || circleColor >= 66) {
                 programState = 'fail'
             }
         }
