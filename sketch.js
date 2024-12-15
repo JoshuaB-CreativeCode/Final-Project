@@ -10,7 +10,8 @@ let backgroundSpawner = 1;
 let circleColor = 0;
 let timeKeeper = 0;
 let failMusic = 0;
-let pressThis = 0
+let pressThis = 0;
+let highScore = 0;
 
 
 function setup() {
@@ -239,6 +240,9 @@ function mousePressed() {
 
 // The fail Screen.
 function failScreen() {
+    if (highScore < score) {
+        highScore = score;
+    }
     circleX = -500
     circleY = -500
     background(150,150,150);
@@ -248,5 +252,6 @@ function failScreen() {
     text('Y O U  F A I L E D !', 400, 150);
     textSize(35);
     text('Score: ' + score, 400, 250);
+    text('Highscore: ' + highScore, 400, 325);
     text('Press "ENTER" to try again!', 400, 400);
 }
